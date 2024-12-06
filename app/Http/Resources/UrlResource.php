@@ -14,8 +14,9 @@ class UrlResource extends JsonResource
         return [
             'id' => $this->id,
             'url' => $this->url,
-            'shorten' => $this->shorten,
-            'timeout' => $this->timeout,
+            'shorCode' => $this->shorten,
+//            'timeout' => $this->timeout,
+            'accessCount' => $this->whenHas('accessCount'),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Url extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'url',
         'shorten',
         'timeout',
+        'accessCount',
     ];
 
     protected function casts(): array
@@ -20,5 +20,9 @@ class Url extends Model
         return [
             'timeout' => 'datetime',
         ];
+    }
+    public function getRouteKeyName(): string
+    {
+        return 'shorten';
     }
 }

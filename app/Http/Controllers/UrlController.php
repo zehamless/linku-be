@@ -16,11 +16,11 @@ class UrlController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'url' => ['required'],
-            'shorten' => ['required'],
+            'url' => ['required', 'url'],
+            'shorten' => ['required', 'string'],
             'timeout' => ['required', 'date'],
         ]);
-
+        $data['shorten'] = \Str::slug($data['shorten']);
         return new UrlResource(Url::create($data));
     }
 
@@ -32,8 +32,8 @@ class UrlController extends Controller
     public function update(Request $request, Url $url)
     {
         $data = $request->validate([
-            'url' => ['required'],
-            'shorten' => ['required'],
+            'url' => ['required', 'url'],
+            'shorten' => ['required', 'string'],
             'timeout' => ['required', 'date'],
         ]);
 

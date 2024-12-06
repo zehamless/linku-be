@@ -11,7 +11,8 @@ return new class extends Migration {
             $table->id();
             $table->string('url');
             $table->string('shorten')->unique();
-            $table->dateTime('timeout');
+            $table->dateTime('timeout')->nullable();
+            $table->increments('accessCount')->default(0);
             $table->timestamps();
         });
     }
