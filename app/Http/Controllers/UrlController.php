@@ -29,6 +29,7 @@ public function store(Request $request)
 
     public function show(Url $url)
     {
+        $url->increment('accessCount');
         return new UrlResource($url);
     }
 
@@ -37,7 +38,7 @@ public function store(Request $request)
         $data = $request->validate([
             'url' => ['required', 'url'],
             'shorten' => ['required', 'string'],
-            'timeout' => ['required', 'date'],
+            'timeout' => ['nullable', 'date'],
         ]);
 
         $url->update($data);

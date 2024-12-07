@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->string('url');
             $table->string('shorten')->unique();
             $table->dateTime('timeout')->nullable();
-            $table->increments('accessCount')->default(0);
+            $table->integer('accessCount')->default(0);
             $table->timestamps();
         });
     }
