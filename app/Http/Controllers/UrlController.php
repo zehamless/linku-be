@@ -13,16 +13,19 @@ class UrlController extends Controller
         return UrlResource::collection(Url::all());
     }
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'url' => ['required', 'url'],
-            'shorten' => ['required', 'string'],
-            'timeout' => ['required', 'date'],
-        ]);
-        $data['shorten'] = \Str::slug($data['shorten']);
-        return new UrlResource(Url::create($data));
-    }
+public function store(Request $request)
+{
+    $data = $request->validate([
+        'url' => 'required|url',
+        'shorten' => 'required|string',
+        'timeout' => 'nullable|date',
+    ]);
+
+    $data['shorten'] = \Str::slug($data['shorten']);
+    $url = Url::firstOrCreate(['shorten' => $data['shorten']], $data);
+
+    return new UrlResource($url);
+}
 
     public function show(Url $url)
     {

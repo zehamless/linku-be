@@ -10,7 +10,7 @@ Route::get('/user', function (Request $request) {
 Route::prefix('v1')->group(function (){
 //    Route::get('linku', [\App\Http\Controllers\UrlController::class, 'index']);
     Route::post('linku', [\App\Http\Controllers\UrlController::class, 'store']);
-    Route::get('linku/{shortUrl}', [\App\Http\Controllers\UrlController::class, 'show'])->name('shortUrl');
-    Route::put('linku/{shortUrl}', [\App\Http\Controllers\UrlController::class, 'update'])->name('update-shortUrl');
-    Route::delete('linku/{shortUrl}', [\App\Http\Controllers\UrlController::class, 'destroy'])->name('delete-shortUrl');
+    Route::get('linku/{url}', [\App\Http\Controllers\UrlController::class, 'show'])->name('shortUrl');
+    Route::put('linku/{url}', [\App\Http\Controllers\UrlController::class, 'update'])->name('update-shortUrl');
+    Route::delete('linku/{url}', [\App\Http\Controllers\UrlController::class, 'destroy'])->name('delete-shortUrl');
 });
